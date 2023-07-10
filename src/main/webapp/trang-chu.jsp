@@ -12,5 +12,9 @@
 </head>
 <body>
     <p>Tên tôi là: ${ten}</p>
+    <p>Thông tin sinh viên</p>
+    <p>Họ tên: ${sinhVien.hoTen}</p>
+    <p>Lớp: ${sinhVien.lop}</p>
+    <p>Địa chỉ: ${sinhVien.diaChi}</p>
 </body>
 </html>

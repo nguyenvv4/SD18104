@@ -1,5 +1,6 @@
-package com.example.sd18104;
+package com.example.sd18104.servlet;
 
+import com.example.sd18104.entity.SinhVien;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,6 +14,8 @@ public class Servlet extends HttpServlet {
         System.out.println("Da chay vao day GET");
         String tenSinhVien = " Nguyen Van A";
         request.setAttribute("ten", tenSinhVien);
+        SinhVien sinhVien = new SinhVien("Nguyen Van A", "SD18104", "Ha Noi");
+        request.setAttribute("sinhVien", sinhVien);
         request.getRequestDispatcher("trang-chu.jsp").forward(request, response);
     }
 
