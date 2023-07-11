@@ -6,6 +6,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "Servlet", value = "/Servlet")
 public class Servlet extends HttpServlet {
@@ -16,6 +17,13 @@ public class Servlet extends HttpServlet {
         request.setAttribute("ten", tenSinhVien);
         SinhVien sinhVien = new SinhVien("Nguyen Van A", "SD18104", "Ha Noi");
         request.setAttribute("sinhVien", sinhVien);
+
+        ArrayList<SinhVien> list = new ArrayList<>();
+        list.add(new SinhVien("Nguyen Van A", "SD18104", "Ha Noi"));
+        list.add(new SinhVien("Nguyen Van B", "SD18105", "Ha Noi 1"));
+        list.add(new SinhVien("Nguyen Van C", "SD18105", "Ha Noi 2"));
+        list.add(new SinhVien("Nguyen Van D", "SD18104", "Ha Noi"));
+        request.setAttribute("listSinhVien", list);
         request.getRequestDispatcher("trang-chu.jsp").forward(request, response);
     }
 
