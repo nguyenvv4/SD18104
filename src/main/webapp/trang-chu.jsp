@@ -38,6 +38,7 @@
 <table class="table">
     <thead>
     <tr>
+        <td>Id</td>
         <td>Ho ten</td>
         <td>Lop</td>
         <td>Dia chi</td>
@@ -46,11 +47,12 @@
     <tbody>
     <c:forEach items="${listSinhVien}" var="sinhVien">
         <tr>
+            <td>${sinhVien.id}</td>
             <td>${sinhVien.hoTen}</td>
             <td>${sinhVien.lop}</td>
             <td>${sinhVien.diaChi}</td>
             <td>
-                <a class="btn btn-primary" href="/detail" >Detail</a>
+                <a class="btn btn-primary" href="/detail?id=${sinhVien.id}" >Detail</a>
                 <a class="btn btn-primary">Xoa</a>
             </td>
         </tr>
