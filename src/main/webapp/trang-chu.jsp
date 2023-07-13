@@ -53,7 +53,7 @@
             <td>${sinhVien.diaChi}</td>
             <td>
                 <a class="btn btn-primary" href="/detail?id=${sinhVien.id}" >Detail</a>
-                <a class="btn btn-primary">Xoa</a>
+                <a class="btn btn-primary" href="/delete?id=${sinhVien.id}">Xoa</a>
             </td>
         </tr>
     </c:forEach>

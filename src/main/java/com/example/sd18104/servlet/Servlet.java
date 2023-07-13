@@ -12,6 +12,7 @@ import java.util.ArrayList;
         "/home", // GET
         "/detail", // GET
         "/update", // POST
+        "/delete", //GET
 })
 public class Servlet extends HttpServlet {
     ArrayList<SinhVien> list = new ArrayList<>();
@@ -39,6 +40,16 @@ public class Servlet extends HttpServlet {
             }
             request.setAttribute("detail", detail);
             request.getRequestDispatcher("detail.jsp").forward(request, response);
+        } else if (request.getRequestURI().contains("/delete")) {
+            String id = request.getParameter("id");
+            SinhVien detail = new SinhVien();
+            for (SinhVien sinhVien : list) {
+                if (sinhVien.getId().equals(id)) {
+                    detail = sinhVien;
+                }
+            }
+            list.remove(detail);
+            response.sendRedirect("/home");
         }
     }
 
