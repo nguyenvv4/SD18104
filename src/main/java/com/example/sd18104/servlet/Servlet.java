@@ -9,8 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "Servlet", value = {
-        "/home",
-        "/detail"
+        "/home", // GET
+        "/detail", // GET
+        "/update", // POST
 })
 public class Servlet extends HttpServlet {
     ArrayList<SinhVien> list = new ArrayList<>();
@@ -43,6 +44,21 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Da chay vao day POST");
+        if (request.getRequestURI().contains("/update")) {
+            String id = request.getParameter("id");
+            String hoTen = request.getParameter("hoTen");
+            String lop = request.getParameter("lop");
+            String diaChi = request.getParameter("diaChi");
+
+            for (SinhVien sinhVien : list) {
+                if (sinhVien.getId().equals(id)) {
+                    sinhVien.setHoTen(hoTen);
+                    sinhVien.setLop(lop);
+                    sinhVien.setDiaChi(diaChi);
+                }
+            }
+
+            response.sendRedirect("/home");
+        }
     }
 }

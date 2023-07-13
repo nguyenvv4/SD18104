@@ -14,25 +14,25 @@
 
 </head>
 <body class="container">
-<form action="">
+<form action="/update" method="post">
     <div class="mb-3">
         <label class="form-label">Id</label>
-        <input type="text" class="form-control" disabled value="${detail.id}">
+        <input type="text" class="form-control"  value="${detail.id}" name="id">
     </div>
     <div class="mb-3">
         <label class="form-label">Ho Ten</label>
-        <input type="text" class="form-control" value="${detail.hoTen}">
+        <input type="text" class="form-control" value="${detail.hoTen}" name="hoTen">
     </div>
     <div class="mb-3">
         <label class="form-label">Lop</label>
-        <input type="text" class="form-control" value="${detail.lop}">
+        <input type="text" class="form-control" value="${detail.lop}" name="lop">
     </div>
     <div class="mb-3">
         <label class="form-label">Dia chi</label>
-        <input type="text" class="form-control" value="${detail.diaChi}">
+        <input type="text" class="form-control" value="${detail.diaChi}" name="diaChi">
     </div>
     <button class="btn btn-primary">
-        Submit
+        Update
     </button>
 </form>
 </body>
