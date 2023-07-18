@@ -13,6 +13,8 @@ public class SanPhamRepository {
         List<SanPham> listSanPham = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             listSanPham = session.createQuery("from SanPham ").list();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return listSanPham;
     }
