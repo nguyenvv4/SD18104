@@ -27,4 +27,14 @@ public class SanPham {
 
     @Column(name = "GiaBan")
     private Integer giaBan;
+
+    @Override
+    public String toString() {
+        return "SanPham{" +
+                "id=" + id +
+                ", ma='" + ma + '\'' +
+                ", ten='" + ten + '\'' +
+                ", giaBan=" + giaBan +
+                '}';
+    }
 }
