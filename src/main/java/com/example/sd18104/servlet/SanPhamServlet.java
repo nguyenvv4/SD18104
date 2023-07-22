@@ -12,6 +12,7 @@ import java.util.List;
 @WebServlet(name = "SanPhamServlet", value = {
         "/san-pham",
         "/detailSP",
+        "/addSp"
 })
 public class SanPhamServlet extends HttpServlet {
     @Override
@@ -32,6 +33,18 @@ public class SanPhamServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        SanPhamRepository sanPhamRepository = new SanPhamRepository();
+        String uri = request.getRequestURI();
+        if (uri.contains("/addSp")) {
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            String giaBan = request.getParameter("giaBan");
+            SanPham sanPham = new SanPham();
+            sanPham.setMa(ma);
+            sanPham.setGiaBan(Integer.parseInt(giaBan));
+            sanPham.setTen(ten);
+            sanPhamRepository.addNew(sanPham);
+            response.sendRedirect("/san-pham");
+        }
     }
 }

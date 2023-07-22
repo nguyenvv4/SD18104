@@ -3,6 +3,7 @@ package com.example.sd18104.repository;
 import com.example.sd18104.entity.SanPham;
 import com.example.sd18104.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,5 +28,19 @@ public class SanPhamRepository {
             e.printStackTrace();
         }
         return sanPham;
+    }
+
+    public void addNew(SanPham sanPham) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(sanPham);
+            transaction.commit();
+        } catch (Exception exception) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            exception.printStackTrace();
+        }
     }
 }

@@ -15,18 +15,18 @@
 
 </head>
 <body class="container">
-<form action="">
+<form action="/addSp" method="post">
     <div class="mb-3">
         <label class="form-label">Mã</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="ma">
     </div>
     <div class="mb-3">
         <label class="form-label">Tên</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="ten">
     </div>
     <div class="mb-3">
         <label class="form-label">Giá bán</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="giaBan">
     </div>
     <button class="btn btn-primary">
         Submit
