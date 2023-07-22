@@ -14,12 +14,11 @@ public class SanPhamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if (uri.equals("/san-pham")) {
+        if (uri.contains("/san-pham")) {
             SanPhamRepository sanPhamRepository = new SanPhamRepository();
             List<SanPham> list = sanPhamRepository.getAll();
-            for (SanPham sp : list) {
-                System.out.println(sp.toString());
-            }
+            request.setAttribute("listSanPham", list);
+            request.getRequestDispatcher("san-pham.jsp").forward(request, response);
         }
     }
 
