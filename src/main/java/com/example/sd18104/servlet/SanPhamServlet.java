@@ -9,16 +9,24 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "SanPhamServlet", value = "/san-pham")
+@WebServlet(name = "SanPhamServlet", value = {
+        "/san-pham",
+        "/detailSP",
+})
 public class SanPhamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SanPhamRepository sanPhamRepository = new SanPhamRepository();
         String uri = request.getRequestURI();
         if (uri.contains("/san-pham")) {
-            SanPhamRepository sanPhamRepository = new SanPhamRepository();
             List<SanPham> list = sanPhamRepository.getAll();
             request.setAttribute("listSanPham", list);
             request.getRequestDispatcher("san-pham.jsp").forward(request, response);
+        } else if (uri.contains("/detailSP")) {
+            String id = request.getParameter("id");
+            SanPham sp = sanPhamRepository.getById(Integer.parseInt(id));
+            request.setAttribute("sanPham", sp);
+            request.getRequestDispatcher("detailSP.jsp").forward(request, response);
         }
     }
 

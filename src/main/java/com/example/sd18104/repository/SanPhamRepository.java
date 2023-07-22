@@ -13,9 +13,19 @@ public class SanPhamRepository {
         List<SanPham> listSanPham = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             listSanPham = session.createQuery("from SanPham ").list();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return listSanPham;
+    }
+
+    public SanPham getById(Integer id) {
+        SanPham sanPham = new SanPham();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            sanPham = session.get(SanPham.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sanPham;
     }
 }

@@ -50,10 +50,10 @@
             <td>${sp.ma}</td>
             <td>${sp.ten}</td>
             <td>${sp.giaBan}</td>
-<%--            <td>--%>
-<%--                <a class="btn btn-primary" href="/detail?id=${sinhVien.id}" >Detail</a>--%>
+            <td>
+                <a class="btn btn-primary" href="/detailSP?id=${sp.id}" >Detail</a>
 <%--                <a class="btn btn-primary" href="/delete?id=${sinhVien.id}">Xoa</a>--%>
-<%--            </td>--%>
+            </td>
         </tr>
     </c:forEach>
 
