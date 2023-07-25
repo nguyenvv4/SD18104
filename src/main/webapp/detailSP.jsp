@@ -14,22 +14,22 @@
 
 </head>
 <body class="container">
-<form action="">
+<form action="/updateSp" method="post">
     <div class="mb-3">
         <label class="form-label">ID</label>
-        <input type="text" class="form-control" value="${sanPham.id}">
+        <input type="text" class="form-control" value="${sanPham.id}" name="id">
     </div>
     <div class="mb-3">
         <label class="form-label">Mã</label>
-        <input type="text" class="form-control" value="${sanPham.ma}">
+        <input type="text" class="form-control" value="${sanPham.ma}" name="ma">
     </div>
     <div class="mb-3">
         <label class="form-label">Tên</label>
-        <input type="text" class="form-control" value="${sanPham.ten}">
+        <input type="text" class="form-control" value="${sanPham.ten}" name="ten">
     </div>
     <div class="mb-3">
         <label class="form-label">Giá bán</label>
-        <input type="text" class="form-control" value="${sanPham.giaBan}">
+        <input type="text" class="form-control" value="${sanPham.giaBan}" name="giaBan">
     </div>
     <button class="btn btn-primary">
         Submit

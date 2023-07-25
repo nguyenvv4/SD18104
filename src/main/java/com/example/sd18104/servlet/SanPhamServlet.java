@@ -12,7 +12,9 @@ import java.util.List;
 @WebServlet(name = "SanPhamServlet", value = {
         "/san-pham",
         "/detailSP",
-        "/addSp"
+        "/addSp",
+        "/deleteSp",
+        "/updateSp"
 })
 public class SanPhamServlet extends HttpServlet {
     @Override
@@ -28,6 +30,12 @@ public class SanPhamServlet extends HttpServlet {
             SanPham sp = sanPhamRepository.getById(Integer.parseInt(id));
             request.setAttribute("sanPham", sp);
             request.getRequestDispatcher("detailSP.jsp").forward(request, response);
+        } else if (uri.contains("/deleteSp")) {
+            String id = request.getParameter("id");
+            SanPham sp = new SanPham();
+            sp.setId(Integer.parseInt(id));
+            sanPhamRepository.delete(sp);
+            response.sendRedirect("/san-pham");
         }
     }
 
@@ -44,6 +52,18 @@ public class SanPhamServlet extends HttpServlet {
             sanPham.setGiaBan(Integer.parseInt(giaBan));
             sanPham.setTen(ten);
             sanPhamRepository.addNew(sanPham);
+            response.sendRedirect("/san-pham");
+        } else if (uri.contains("/updateSp")) {
+            String id = request.getParameter("id");
+            String ma = request.getParameter("ma");
+            String ten = request.getParameter("ten");
+            String giaBan = request.getParameter("giaBan");
+            SanPham sanPham = new SanPham();
+            sanPham.setId(Integer.parseInt(id));
+            sanPham.setMa(ma);
+            sanPham.setGiaBan(Integer.parseInt(giaBan));
+            sanPham.setTen(ten);
+            sanPhamRepository.update(sanPham);
             response.sendRedirect("/san-pham");
         }
     }

@@ -43,4 +43,36 @@ public class SanPhamRepository {
             exception.printStackTrace();
         }
     }
+
+    public Boolean delete(SanPham sp) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(sp);
+            transaction.commit();
+            return true;
+        } catch (Exception exception) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            exception.printStackTrace();
+            return false;
+        }
+    }
+
+    public Boolean update(SanPham sanPham) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(sanPham);
+            transaction.commit();
+            return true;
+        } catch (Exception exception) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            exception.printStackTrace();
+            return false;
+        }
+    }
 }

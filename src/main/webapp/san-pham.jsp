@@ -52,7 +52,7 @@
             <td>${sp.giaBan}</td>
             <td>
                 <a class="btn btn-primary" href="/detailSP?id=${sp.id}" >Detail</a>
-<%--                <a class="btn btn-primary" href="/delete?id=${sinhVien.id}">Xoa</a>--%>
+                <a class="btn btn-primary" href="/deleteSp?id=${sp.id}">Xoa</a>
             </td>
         </tr>
     </c:forEach>
