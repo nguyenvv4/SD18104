@@ -1,5 +1,6 @@
 package com.example.sd18104.util;
 
+import com.example.sd18104.entity.ChiTietSanPham;
 import com.example.sd18104.entity.SanPham;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -26,6 +27,7 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(SanPham.class);
+        conf.addAnnotatedClass(ChiTietSanPham.class);
 //        conf.addAnnotatedClass(SinhVien.class);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
